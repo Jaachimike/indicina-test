@@ -3,8 +3,10 @@ import DecodeForm from "../components/DecodeForm";
 
 const DecodePage = () => {
   return (
-    <div>
-      <h1>URL Shortener - Decode URL</h1>
+    <div className="max-w-7xl mx-auto mt-16">
+      <h1 className="text-3xl font-bold text-center">
+        URL Shortener - Decode URL
+      </h1>
       <DecodeForm />
     </div>
   );

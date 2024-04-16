@@ -10,7 +10,7 @@ function App() {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/" element={<EncodePage />} />
+        <Route index path="/" element={<EncodePage />} />
         <Route path="/decode" element={<DecodePage />} />
         <Route path="/statistics" element={<StatisticsPage />} />
       </Routes>

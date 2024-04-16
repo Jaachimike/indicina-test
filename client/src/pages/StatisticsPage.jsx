@@ -3,9 +3,11 @@ import Statistics from "../components/Statistics";
 
 const StatisticsPage = () => {
   return (
-    <div>
+    <div className="max-w-7xl mx-auto mt-16">
       {" "}
-      <h1>URL Shortener - Statistics</h1>
+      <h1 className="text-3xl font-bold text-center">
+        URL Shortener - Statistics
+      </h1>
       <Statistics />
     </div>
   );
