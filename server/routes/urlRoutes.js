@@ -26,6 +26,18 @@ router.post('/encode', async (req, res) => {
     }
 });
 
+//get all shortened url data 
+router.get('/data', async (req, res) => {
+    try {
+        // Fetch data using Mongoose
+        const data = await Url.find();
+        res.json(data);
+    } catch (error) {
+        console.error('Error fetching data:', error);
+        res.status(500).send('Error fetching data');
+    }
+})
+
 //Route to open short link to accurate original link 
 router.get('/:shortUrlId', async (req, res) => {
     const { shortUrlId } = req.params;
@@ -53,13 +65,45 @@ router.get('/:shortUrlId', async (req, res) => {
 });
 
 // Route to decode shortened URL
-router.get('/:shortUrl', async (req, res) => {
-    // Add functionality to decode the short URL and redirect to the original URL
+router.post('/decode', async (req, res) => {
+    const { shortenedUrl } = req.body;
+    const shortenedUrlId = shortenedUrl.slice(-9)
+    try {
+        // Find URL in database based on the short URL
+        const foundUrl = await Url.findOne({ shortUrl: shortenedUrlId });
+
+
+        if (!foundUrl) {
+            return res.status(404).json({ error: 'URL not found' });
+        }
+        // Redirect to the original URL
+        res.json(foundUrl.originalUrl);
+    } catch (error) {
+        console.error('Error fetching original URL:', error);
+        res.status(500).json({ error: 'Server error' });
+    }
+
 });
 
 // Route to get URL statistics
-router.get('/:shortUrl/stats', async (req, res) => {
+router.get('/statistic/:shortUrl', async (req, res) => {
     // Add functionality to retrieve statistics for the short URL
+    try {
+        const shortUrl = req.params.shortUrl;
+        // console.log(shortUrl);
+
+        // Use Mongoose to query statistics based on the short URL
+        const statistics = await Url.findOne({ shortUrl: shortUrl });
+
+        if (!statistics) {
+            return res.status(404).json({ error: 'Statistics not found' });
+        }
+
+        res.json(statistics);
+    } catch (error) {
+        console.error('Error fetching statistics:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 module.exports = router;

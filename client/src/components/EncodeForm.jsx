@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import axios from "axios";
 
@@ -39,11 +39,22 @@ const EncodeForm = () => {
       </form>
 
       {shortUrl && (
-        <div className="mt-4">
-          Short URL:
-          <a href={shortUrl} target="_blank" rel="noopener noreferrer">
-            {`https://short.est/${shortUrl}`}
-          </a>
+        <div className="mt-4 text-center font-semibold">
+          <p>
+            {" "}
+            Your Shortened URL is:{" "}
+            <span>
+              {" "}
+              <a
+                href={shortUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500"
+              >
+                {`https://short.est/${shortUrl}`}
+              </a>
+            </span>
+          </p>
         </div>
       )}
     </div>
