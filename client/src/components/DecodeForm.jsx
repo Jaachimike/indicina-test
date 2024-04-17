@@ -9,7 +9,7 @@ const DecodeForm = () => {
     event.preventDefault();
     // Add functionality to decode the shortened URL
     try {
-      const response = await axios.post("http://localhost:5000/decode", {
+      const response = await axios.post("http://localhost:5001/decode", {
         shortenedUrl,
       });
       setOriginalUrl(response.data);

@@ -26,8 +26,8 @@ router.post('/encode', async (req, res) => {
 router.get('/data', async (req, res) => {
     try {
         // Fetch data using Mongoose
-        const data = await Url.find();
-        res.json(data);
+        const data = await Url.find({}, { originalUrl: 1, shortUrl: 1 });
+        res.status(200).json(data);
     } catch (error) {
         console.error('Error fetching data:', error);
         res.status(500).send('Error fetching data');
@@ -47,7 +47,7 @@ router.get('/:shortUrlId', async (req, res) => {
         shortUrl.clicks++;
         shortUrl.save();
         // Redirect to the original URL
-        res.json(shortUrl);
+        res.status(200).json(shortUrl);
     } catch (error) {
         console.error('Error redirecting to original URL:', error);
         res.status(500).json({ error: 'Server error' });
@@ -65,7 +65,7 @@ router.post('/decode', async (req, res) => {
             return res.status(404).json({ error: 'URL not found' });
         }
         // Redirect to the original URL
-        res.json(foundUrl.originalUrl);
+        res.status(200).json(foundUrl.originalUrl);
     } catch (error) {
         console.error('Error fetching original URL:', error);
         res.status(500).json({ error: 'Server error' });
@@ -83,7 +83,7 @@ router.get('/statistic/:shortUrl', async (req, res) => {
         if (!statistics) {
             return res.status(404).json({ error: 'Statistics not found' });
         }
-        res.json(statistics);
+        res.status(200).json(statistics);
     } catch (error) {
         console.error('Error fetching statistics:', error);
         res.status(500).json({ error: 'Internal Server Error' });

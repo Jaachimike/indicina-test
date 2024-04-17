@@ -9,7 +9,7 @@ const RedirectPage = () => {
   useEffect(() => {
     const fetchOriginalUrl = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/${shortUrlId}`);
+        const response = await axios.get(`http://localhost:5001/${shortUrlId}`);
         console.log(response.data);
         // Redirect to the original URL
         window.location.href = response.data.originalUrl;

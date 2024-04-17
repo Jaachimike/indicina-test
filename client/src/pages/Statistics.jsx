@@ -11,7 +11,7 @@ const Statistics = () => {
     const fetchStatistics = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/statistic/${shortUrl}`
+          `http://localhost:5001/statistic/${shortUrl}`
         );
         setStatistics(response.data);
         setLoading(false);

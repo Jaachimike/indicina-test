@@ -10,7 +10,7 @@ const EncodeForm = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:5000/encode", {
+      const response = await axios.post("http://localhost:5001/encode", {
         originalUrl,
       });
       setShortUrl(response.data.shortUrl);

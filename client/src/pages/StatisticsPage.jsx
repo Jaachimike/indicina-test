@@ -12,7 +12,7 @@ const StatisticsPage = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/data");
+      const response = await axios.get("http://localhost:5001/data");
       setData(response.data);
       console.log(data);
     } catch (error) {
