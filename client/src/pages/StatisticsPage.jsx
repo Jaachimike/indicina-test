@@ -26,19 +26,19 @@ const StatisticsPage = () => {
       <h1 className="text-3xl font-bold text-center">
         URL Shortener - Statistics
       </h1>
-      <div className="flex justify-center mt-8">
+      <div className="flex justify-center mt-8 overflow-x-auto">
         <table className="table-fixed w-full">
-          <thead>
+          <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th>Original URL</th>
-              <th>Shortened URL</th>
-              <th>Statistics</th>
+              <th className="px-6 py-4">Original URL</th>
+              <th className="px-6 py-4">Shortened URL</th>
+              <th className="px-6 py-4">Statistics</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
               <tr key={index} className="">
-                <td>
+                <td className="px-6 py-4 text-center">
                   <a
                     href={item.originalUrl}
                     target="_blank"
@@ -49,7 +49,7 @@ const StatisticsPage = () => {
                   </a>
                 </td>
 
-                <td>
+                <td className="px-6 py-4 text-center">
                   <a
                     href={item.shortUrl}
                     target="_blank"
@@ -60,7 +60,7 @@ const StatisticsPage = () => {
                   </a>
                 </td>
 
-                <td>
+                <td className="px-6 py-4 text-center">
                   <Link
                     to={`/statistic/${item.shortUrl}`}
                     className="bg-blue-800 text-white font-semibold px-3 py-2"

@@ -24,18 +24,18 @@ const EncodePage = () => {
       </h1>
       <EncodeForm />
       <h3 className="text-xl font-bold text-center  mt-16 mb-6">HISTORY</h3>
-      <div className="flex justify-center">
+      <div className="flex justify-center overflow-x-auto">
         <table className="table-fixed">
-          <thead>
+          <thead className="text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th>Original URL</th>
-              <th>Shortened URL</th>
+              <th className="px-6 py-4">Original URL</th>
+              <th className="px-6 py-4">Shortened URL</th>
             </tr>
           </thead>
           <tbody>
             {data.map((item, index) => (
               <tr key={index}>
-                <td>
+                <td className="px-6 py-4 text-center">
                   <a
                     href={item.originalUrl}
                     target="_blank"
@@ -46,7 +46,7 @@ const EncodePage = () => {
                   </a>
                 </td>
 
-                <td>
+                <td className="px-6 py-4 text-center">
                   <a
                     href={item.shortUrl}
                     target="_blank"
