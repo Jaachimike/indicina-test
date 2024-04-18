@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../routes/urlRoutes'); // Import your routes file
+const app = 'localhost:5001'; // Import your routes file
 
 describe('POST /encode', () => {
     it('should return a 201 status code and encoded URL on success', async () => {

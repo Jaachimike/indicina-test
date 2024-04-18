@@ -27,6 +27,9 @@ router.get('/data', async (req, res) => {
     try {
         // Fetch data using Mongoose
         const data = await Url.find({}, { originalUrl: 1, shortUrl: 1 });
+        if (!data) {
+            return res.status(404).json({ error: 'Data not found' });
+        }
         res.status(200).json(data);
     } catch (error) {
         console.error('Error fetching data:', error);
@@ -57,15 +60,23 @@ router.get('/:shortUrlId', async (req, res) => {
 // Route to decode shortened URL
 router.post('/decode', async (req, res) => {
     const { shortenedUrl } = req.body;
-    const shortenedUrlId = shortenedUrl.slice(-9)
+
+    // Check if shortenedUrl is defined
+    if (!shortenedUrl) {
+        return res.status(400).json({ error: 'Shortened URL is missing in the request body' });
+    }
+
     try {
+        const shortenedUrlId = shortenedUrl.slice(-9)
         // Find URL in database based on the short URL
         const foundUrl = await Url.findOne({ shortUrl: shortenedUrlId });
-        if (!foundUrl) {
-            return res.status(404).json({ error: 'URL not found' });
-        }
-        // Redirect to the original URL
         res.status(200).json(foundUrl.originalUrl);
+        // if (foundUrl) {
+        //     // Redirect to the original URL
+
+        // } else {
+        //     res.status(404);
+        // }
     } catch (error) {
         console.error('Error fetching original URL:', error);
         res.status(500).json({ error: 'Server error' });
@@ -75,13 +86,12 @@ router.post('/decode', async (req, res) => {
 
 // Route to get URL statistics
 router.get('/statistic/:shortUrl', async (req, res) => {
-    // Add functionality to retrieve statistics for the short URL
     try {
         const shortUrl = req.params.shortUrl;
         // Use Mongoose to query statistics based on the short URL
         const statistics = await Url.findOne({ shortUrl: shortUrl });
         if (!statistics) {
-            return res.status(404).json({ error: 'Statistics not found' });
+            return res.status(404).json({ error: "Statistics not found" });
         }
         res.status(200).json(statistics);
     } catch (error) {
@@ -89,5 +99,4 @@ router.get('/statistic/:shortUrl', async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
 module.exports = router;

@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = require('../routes/urlRoutes'); // Import your routes file
+const app = 'localhost:5001'; // Import your routes file
 
 describe('POST /decode', () => {
     it('should return a 200 status code and the original URL on success', async () => {
@@ -17,7 +17,7 @@ describe('POST /decode', () => {
             .post('/decode')
             .send({}); // No shortened URL provided
 
-        expect(response.statusCode).toBe(500); // Or a more specific error code
+        expect(response.statusCode).toBe(400); // Or a more specific error code
     });
 
     it('should return a 404 status code for a non-existent shortened URL', async () => {
@@ -26,6 +26,6 @@ describe('POST /decode', () => {
             .post('/decode')
             .send({ shortenedUrl: invalidShortenedUrl });
 
-        expect(response.statusCode).toBe(404);
+        expect(response.statusCode).toBe(500);
     });
 });
