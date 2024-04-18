@@ -9,4 +9,6 @@ module.exports = {
 
     // Set up test environment for Node.js (prevents DOM errors)
     testEnvironment: 'node',
+    globalSetup: "./jestGlobalSetup.js",
+    globalTeardown: "./jestGlobalTeardown.js"
 };

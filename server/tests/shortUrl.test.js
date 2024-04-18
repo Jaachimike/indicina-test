@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = 'localhost:5001'; // Import your routes file
+const app = require('../index') // Import your routes file
 
 describe('GET /:shortUrlId', () => { // Replace with actual parameter name
     it('should redirect to the original URL on success', async () => {
