@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "test": "jest --watchAll  --maxWorkers=1"
+    "test": "cross-env NODE_ENV=test jest --watchAll  --maxWorkers=5 --testTimeout=10000"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongoose": "^8.3.2",
     "shortid": "^2.2.16"

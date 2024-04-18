@@ -1,8 +1,12 @@
 const request = require('supertest');
-const app = 'localhost:5001'; // Import your routes file
+const app = require('../index') // Import your routes file
 
 describe('GET /statistic/:shortUrl', () => { // Replace with actual parameter name
     it('should return a 200 status code and statistics on success', async () => {
+        // add FiFlb-L0J to the db
+
+        // check to make sure it exists
+
         // Assuming you have a shortened URL with statistics stored in your database
         const shortUrlId = 'FiFlb-L0J'; // Replace with actual short URL ID
         const response = await request(app).get(`/statistic/${shortUrlId}`); // Replace with actual route

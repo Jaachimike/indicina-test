@@ -1,5 +1,5 @@
 const request = require('supertest');
-const app = 'localhost:5001'; // Import your routes file
+const app = require('../index') // Import your routes file
 
 describe('POST /decode', () => {
     it('should return a 200 status code and the original URL on success', async () => {

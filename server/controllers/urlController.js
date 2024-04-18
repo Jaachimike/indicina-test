@@ -14,7 +14,7 @@ exports.encodeUrl = async (req, res) => {
         await url.save();
         res.status(201).json(url);
     } catch (error) {
-        console.error('Error encoding URL:', error);
+        // console.error('Error encoding URL:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };
@@ -66,7 +66,7 @@ exports.decodeShortenedUrl = async (req, res) => {
         const foundUrl = await Url.findOne({ shortUrl: shortenedUrlId });
         res.status(200).json(foundUrl.originalUrl);
     } catch (error) {
-        console.error('Error fetching original URL:', error);
+        // console.error('Error fetching original URL:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };
