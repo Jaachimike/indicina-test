@@ -3,8 +3,8 @@ To run the tests for this project, follow the following steps:
 - clone the repo into your desired folder
 - navigate to the server file using 'cd server'
 - run " npm install "
-- create a .env file using the .env.sample file.
 - run " npm install " again to ensure all dependencies have been downloaded
+- create a .env file using the .env.sample file.
 - add the database credentials provided
 - save the .env file
 - open the terminal and run the line " npm run dev "
