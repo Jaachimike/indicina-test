@@ -3,13 +3,12 @@ To run the tests for this project, follow the following steps:
 - clone the repo into your desired folder
 - navigate to the server file using 'cd server'
 - run " npm install "
-- create a .env file under the server folder
+- create a .env file using the .env.sample file.
 - run " npm install " again to ensure all dependencies have been downloaded
-- add the following credentials for the database to the .env file " MONGODB_URI=mongodb+srv://okaforjaachi:f51OntGJVaWTs0wY@cluster0.7bsma7u.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 "
+- add the database credentials provided
 - save the .env file
 - open the terminal and run the line " npm run dev "
 - run the line " npm run test " on a new terminal inside the server directory after the database has started
-- if any of the tests fails, run the command "npm run test" again and all the tests should run properly
 - the desired test result will be provided
 
 To check the test scripts:
