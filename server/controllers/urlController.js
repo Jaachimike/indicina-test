@@ -2,7 +2,7 @@ const Url = require('../models/Url');
 const shortid = require('shortid');
 
 exports.encodeUrl = async (req, res) => {
-    const { originalUrl } = req.body;
+    const { originalUrl, deviceInfo } = req.body;
     try {
         // Generate short URL ID
         const shortUrlId = shortid.generate();
@@ -10,11 +10,12 @@ exports.encodeUrl = async (req, res) => {
         const url = new Url({
             originalUrl,
             shortUrl: shortUrlId,
+            deviceInfo,
         });
         await url.save();
         res.status(201).json(url);
     } catch (error) {
-        // console.error('Error encoding URL:', error);
+        console.error('Error encoding URL:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };
@@ -66,7 +67,7 @@ exports.decodeShortenedUrl = async (req, res) => {
         const foundUrl = await Url.findOne({ shortUrl: shortenedUrlId });
         res.status(200).json(foundUrl.originalUrl);
     } catch (error) {
-        // console.error('Error fetching original URL:', error);
+        console.error('Error fetching original URL:', error);
         res.status(500).json({ error: 'Server error' });
     }
 };

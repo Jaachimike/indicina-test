@@ -3,13 +3,13 @@ const app = require('../index') // Import your routes file
 
 describe('POST /decode', () => {
     it('should return a 200 status code and the original URL on success', async () => {
-        const shortenedUrl = 'https://short.est/FiFlb-L0J'; // Replace with actual shortened URL
+        const shortenedUrl = 'https://short.est/7RlGMpC1q'; // Replace with actual shortened URL
         const response = await request(app)
             .post('/decode')
             .send({ shortenedUrl });
 
         expect(response.statusCode).toBe(200);
-        expect(response.body).toBe('https://gemini.google.com/app/f3966da70f045054'); // Replace with expected original URL variable
+        expect(response.body).toBe('https://www.youtube.com/watch?v=XxPPdlo72ho'); // Replace with expected original URL variable
     });
 
     it('should return a 400 status code on a malformed request', async () => {

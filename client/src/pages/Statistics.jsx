@@ -45,6 +45,7 @@ const Statistics = () => {
           <p>Shortened URL: {`https://short.est/${statistics.shortUrl}`} </p>
           <p>Clicks: {statistics.clicks}</p>
           <p>Time Created: {formattedDateTime}</p>
+          <p>Device Browser Information: {statistics.deviceInfo}</p>
           {/* Add more statistics here as needed */}
         </div>
       ) : (

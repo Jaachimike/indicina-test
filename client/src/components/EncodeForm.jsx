@@ -5,6 +5,16 @@ import axios from "axios";
 const EncodeForm = () => {
   const [originalUrl, setOriginalUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [deviceInfo, setDeviceInfo] = useState(""); // State to store device information
+
+  useEffect(() => {
+    // Fetch device information when component mounts
+    const getDeviceInfo = () => {
+      const { userAgent } = navigator;
+      setDeviceInfo(userAgent);
+    };
+    getDeviceInfo();
+  }, []); // Empty dependency array to run only once when the component mounts
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -12,6 +22,7 @@ const EncodeForm = () => {
     try {
       const response = await axios.post("http://localhost:5001/encode", {
         originalUrl,
+        deviceInfo, // Include device information in the request
       });
       setShortUrl(response.data.shortUrl);
     } catch (error) {

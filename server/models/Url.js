@@ -14,6 +14,10 @@ const urlSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    deviceInfo: {
+        type: String,
+        required: true,
+    },
     createdAt: {
         type: Date,
         default: Date.now,

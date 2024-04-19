@@ -4,9 +4,10 @@ const app = require('../index') // Import your routes file
 describe('POST /encode', () => {
     it('should return a 201 status code and encoded URL on success', async () => {
         const originalUrl = 'https://jaachi-portfolio.netlify.app/';
+        const deviceInfo = ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
         const response = await request(app)
             .post('/encode')
-            .send({ originalUrl });
+            .send({ originalUrl, deviceInfo });
 
         expect(response.statusCode).toBe(201);
         expect(response.body).toHaveProperty('originalUrl', originalUrl);

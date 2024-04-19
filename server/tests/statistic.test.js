@@ -8,10 +8,11 @@ describe('GET /statistic/:shortUrl', () => { // Replace with actual parameter na
         // check to make sure it exists
 
         // Assuming you have a shortened URL with statistics stored in your database
-        const shortUrlId = 'FiFlb-L0J'; // Replace with actual short URL ID
+        const shortUrlId = '7RlGMpC1q'; // Replace with actual short URL ID
         const response = await request(app).get(`/statistic/${shortUrlId}`); // Replace with actual route
 
         expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveProperty('deviceInfo');
         expect(response.body).toHaveProperty('clicks'); // Assuming clicks are stored
         // Add more assertions based on the specific statistics you provide (e.g., total visits)
     });
