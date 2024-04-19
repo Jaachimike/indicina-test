@@ -15,3 +15,9 @@ To run the tests for this project, follow the following steps:
 To check the test scripts:
 
 - navigate under the /server/tests directory to view the different test scripts
+
+To run the full project:
+
+- navigate into the client folder and run 'npm install'
+- run 'npm run dev' after to start up the react application
+- ensure the database is running by navigating to the server folder and running 'npm run dev'
