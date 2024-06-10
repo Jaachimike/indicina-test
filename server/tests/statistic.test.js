@@ -14,7 +14,6 @@ describe('GET /statistic/:shortUrl', () => { // Replace with actual parameter na
         expect(response.statusCode).toBe(200);
         expect(response.body).toHaveProperty('deviceInfo');
         expect(response.body).toHaveProperty('clicks'); // Assuming clicks are stored
-        // Add more assertions based on the specific statistics you provide (e.g., total visits)
     });
 
     it('should return a 404 status code for a non-existent short URL', async () => {

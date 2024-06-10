@@ -7,7 +7,7 @@ describe('POST /encode', () => {
         const deviceInfo = ' Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
         const response = await request(app)
             .post('/encode')
-            .send({ originalUrl, deviceInfo });
+            .send({originalUrl, deviceInfo});
 
         expect(response.statusCode).toBe(201);
         expect(response.body).toHaveProperty('originalUrl', originalUrl);
@@ -19,8 +19,8 @@ describe('POST /encode', () => {
             .post('/encode')
             .send({});
 
-        expect(response.statusCode).toBe(500); // Or a more specific error code if applicable
+        expect(response.statusCode).toBe(500);
     });
 
-    // Add more test cases for error handling and edge cases (optional)
+
 });

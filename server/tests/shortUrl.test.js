@@ -1,14 +1,14 @@
 const request = require('supertest');
-const app = require('../index') // Import your routes file
+const app = require('../index')
 
-describe('GET /:shortUrlId', () => { // Replace with actual parameter name
+describe('GET /:shortUrlId', () => {
     it('should redirect to the original URL on success', async () => {
         // Assuming you have a shortened URL stored in your database
         const shortUrlId = '7RlGMpC1q'; // Replace with actual short URL ID
         const response = await request(app).get(`/${shortUrlId}`);
 
-        expect(response.statusCode).toBe(200); // Redirect code
-        expect(response.body).toMatchObject({ shortUrl: expect.any(String) });
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toMatchObject({shortUrl: expect.any(String)});
     });
 
     it('should return a 404 status code for non-existent short URL', async () => {
